@@ -1,0 +1,72 @@
+/* ========== VALIDATION PAGE STYLES ONLY ========== */
+
+body {
+  padding: 2rem;
+  background-color: #f8faff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.validation-page {
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.1);
+}
+
+h1, h2 {
+  color: #1e3a8a;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.screenshot {
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.back-button {
+  display: inline-block;
+  background-color: #1e3a8a;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #3b82f6;
+}
+
+/* Navigation Links Table */
+.nav-table {
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.nav-table a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: #1e3a8a;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.nav-table a:hover {
+  background-color: #e0f2fe;
+}

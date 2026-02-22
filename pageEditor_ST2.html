@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Editor - Student 2</title>
+  <link rel="stylesheet" href="page-editor.css" />
+</head>
+<body>
+  <div class="page-editor">
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <img src="images/isuruphoto.jpg" alt="Isuru Ravishan Narasinghe" class="profile-photo">
+      <div>
+        <h1>Page Editor – Student 2</h1>
+        <p><strong>Name:</strong> Isuru Ravishan Narasinghe</p>
+        <p><strong>Student ID:</strong> 20240664 | <strong>UOW ID:</strong> w2151090</p>
+        <p><strong>Role:</strong> Responsible for website style and navigation, homepage, data table, and content page</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Completed Pages</h2>
+      <ul>
+        <li><a href="home.html" target="_blank">Home Page</a> - Main landing page with mission statement and content links</li>
+        <li><a href="table.html" target="_blank">Table Page</a> - Interactive climate data table</li>
+        <li><a href="content_ST2.html" target="_blank">Content Page</a> - Sustainable energy information</li>
+      </ul>
+
+      <div class="screenshot-gallery">
+        <img src="images/homepagess.png" alt="Home Page Screenshot">
+        <img src="images/tabless.png" alt="Table Page Screenshot">
+        <img src="images/contentss.png" alt="Content Page Screenshot">
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Techniques & Explanation</h2>
+
+      <h3>1. Separated Page-specific CSS</h3>
+      <p>
+        Created a dedicated CSS files to improve modularity and performance.
+        This ensures clean separation between global styles and editor-specific design.
+      </p>
+
+      <div class="tech-details">
+        <h4>Benefits:</h4>
+        <ul>
+          <li>Improved maintainability through modular code structure</li>
+          <li>Faster load time for unrelated pages (avoids unused CSS)</li>
+          <li>Allows easier debugging and future scalability</li>
+        </ul>
+      </div>
+
+      <h3>2. Global CSS and Website Style</h3>
+      <p>
+        Developed a global stylesheet <code>style.css</code> for consistent branding and layout across all general pages.
+        This includes typography, color schemes, header and footer design, and responsive navigation.
+      </p>
+      
+      <div class="tech-details">
+        <h4>Key Techniques:</h4>
+        <ul>
+          <li>CSS Variables for theming and easy color management</li>
+          <li>Flexbox used to create flexible header and navigation layouts</li>
+          <li>Media queries for adapting to different screen sizes</li>
+          <li>Smooth transition effects for interactive UI elements like links and buttons</li>
+        </ul>
+      </div>
+
+      <h3>3. Home Page</h3>
+      <p>
+        The homepage features a welcoming mission statement and interactive card links to content sections.
+      </p>
+      
+      <div class="tech-details">
+        <h4>Key Features:</h4>
+        <ul>
+          <li>CSS Grid layout for arranging the interactive cards</li>
+          <li>Hover effects using opacity and transform for dynamic user feedback</li>
+          <li>Absolute positioning for text overlays on cards</li>
+          <li>Responsive design with flexible card wrapping on smaller screens</li>
+        </ul>
+      </div>
+
+      <h3>4. Table Page</h3>
+      <p>
+        Created an interactive climate data table with clear visual hierarchy and accessibility considerations.
+      </p>
+      
+      <div class="tech-details">
+        <h4>Technical Implementation:</h4>
+        <table class="task-table">
+          <tr>
+            <th>Feature</th>
+            <th>Implementation</th>
+          </tr>
+          <tr>
+            <td>Merged Cells</td>
+            <td>Used <code>rowspan</code> and <code>colspan</code> attributes for grouping related data</td>
+          </tr>
+          <tr>
+            <td>Zebra Striping</td>
+            <td>Applied <code>:nth-child(even)</code> and <code>:nth-child(odd)</code> CSS selectors</td>
+          </tr>
+          <tr>
+            <td>Hover Effects</td>
+            <td>Used <code>transform: scale(1.01)</code> and background color changes on row hover</td>
+          </tr>
+          <tr>
+            <td>Status Indicators</td>
+            <td>Color-coded text and icons using CSS classes for quick status recognition</td>
+          </tr>
+          <tr>
+            <td>Accessible Table Markup</td>
+            <td>Used <code>scope</code> attributes and proper semantic tags for screen readers</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Validation</h2>
+      <p>All pages passed HTML and CSS validation with no errors.</p>
+      
+      <div class="validation-grid">
+        <div class="validation-item">
+          <h3>Home Page</h3>
+          <a href="validation_ST2.html#home" class="validation-link">View Validation</a>
+        </div>
+        <div class="validation-item">
+          <h3>Table Page</h3>
+          <a href="validation_ST2.html#table" class="validation-link">View Validation</a>
+        </div>
+        <div class="validation-item">
+          <h3>Content Page</h3>
+          <a href="validation_ST2.html#content" class="validation-link">View Validation</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Accessibility</h2>
+      <p>Implemented accessibility features across all pages:</p>
+      <ul>
+        <li>Semantic HTML5 structure (header, nav, main, footer)</li>
+        <li>Alt text for all images</li>
+        <li>Keyboard-navigable interface</li>
+        <li>Color contrast ratio > 4.5:1 for readability</li>
+        <li>ARIA labels where needed</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Challenges & Lessons Learned</h2>
+      <p>Key challenges faced during development:</p>
+      <ul>
+        <li><strong>Responsive Tables:</strong> Making the data table readable on mobile required careful media query implementation</li>
+        <li><strong>Image Paths:</strong> Ensuring image paths worked correctly across different devices</li>
+        <li><strong>CSS Organization:</strong> Maintaining clean and reusable CSS across multiple pages</li>
+      </ul>
+
+      <div class="tech-details">
+        <h4>Key Lessons:</h4>
+        <ul>
+          <li>Importance of mobile-first development approach</li>
+          <li>Benefits of semantic HTML for accessibility</li>
+          <li>Value of consistent file organization</li>
+          <li>Effective use of CSS Grid and Flexbox</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>References</h2>
+      <ul>
+        <li>UN SDG 13 Goal – <a href="https://sdgs.un.org/goals/goal13" target="_blank">https://sdgs.un.org/goals/goal13</a></li>
+        <li>W3Schools – <a href="https://www.w3schools.com/" target="_blank">https://www.w3schools.com/</a></li>
+        <li>Unsplash Images – <a href="https://unsplash.com/" target="_blank">https://unsplash.com/</a></li>
+        <li>University of Westminster Web Design Lecture Notes</li>
+      </ul>
+    </div>
+
+    <a href="#" class="back-to-top">↑ Back to Top</a>
+  </div>
+</body>
+</html>

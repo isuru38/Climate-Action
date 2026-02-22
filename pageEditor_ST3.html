@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Action Now - Page Editor</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8faff;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .site-header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #60a5fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            margin-top: 10px;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+            border-bottom: 2px solid #60a5fa;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 120px;
+            padding: 2rem 0;
+        }
+
+        /* Page Editor Styles */
+        .editor-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .subsection-title {
+            font-size: 1.4rem;
+            color: #1e3a8a;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .content-card {
+            background: linear-gradient(135deg, #f8faff, #e0f2fe);
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card-content {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .card-content ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .card-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background-color: #fef3c7;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .tech-description {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .links-section {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .links-section a {
+            color: #059669;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .links-section a:hover {
+            text-decoration: underline;
+        }
+
+        .accessibility-note {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: #93c5fd;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-list {
+                justify-content: center;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="site-header">
+        <div class="wrapper">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">🌍</div>
+                    <h1 class="site-title">Climate Action Now</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="home.html" class="nav-link">Home</a></li>
+                        <li><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+                        <li><a href="table.html" class="nav-link">Table</a></li>
+                        <li><a href="profile.html" class="nav-link">Profile</a></li>
+                        <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                        <li><a href="sitemap.html" class="nav-link">Sitemap</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="wrapper">
+            <!-- Page Editor Section -->
+            <section class="editor-section">
+                <h2 class="section-title">Student 3 Page Editor: Climate Action Team</h2>
+                
+                <!-- Content Overview -->
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3 class="card-title">1. Content Overview</h3>
+                        <div class="card-content">
+                            <p>As Student 3 in the Climate Action team, I was responsible for implementing comprehensive user interaction and content presentation features supporting UN SDG 3:</p>
+                            <br>
+                            <p><strong>Completed Tasks/Pages:</strong></p>
+                            <ul>
+                                <li>Home Page - Climate Action Now landing page</li>
+                                <li>Volunteer Page - Community engagement portal</li>
+                                <li>Climate Data Table - Environmental statistics dashboard</li>
+                                <li>Team Profile - Climate action team showcase</li>
+                                <li>Feedback System - User engagement platform</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h3 class="card-title">2. Technical Description</h3>
+                        <div class="card-content">
+                            <p>For each page implemented <span class="highlight">(excluding the editor's page and validation page)</span>, I utilized modern web development techniques:</p>
+                            <div class="tech-description">
+                                <p><strong>HTML Structure:</strong> Semantic HTML5 elements including header, nav, main, section, and footer for proper document structure and accessibility.</p>
+                                <p><strong>CSS Styling:</strong> Advanced CSS techniques including flexbox, grid layouts, gradient backgrounds, smooth transitions, and responsive design principles.</p>
+                                <p><strong>Key Features:</strong> Fixed navigation header, interactive hover effects, card-based layouts, and mobile-responsive design.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Implementation Details -->
+                <h3 class="subsection-title">Key HTML Tags and CSS Properties</h3>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h4 class="card-title">HTML Structure Elements</h4>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>&lt;header&gt;</strong> - Site navigation and branding</li>
+                                <li><strong>&lt;nav&gt;</strong> - Main navigation menu</li>
+                                <li><strong>&lt;main&gt;</strong> - Primary content area</li>
+                                <li><strong>&lt;section&gt;</strong> - Content sections (hero, SDG, content grid)</li>
+                                <li><strong>&lt;article&gt;</strong> - Independent content blocks</li>
+                                <li><strong>&lt;footer&gt;</strong> - Site footer with links</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h4 class="card-title">CSS Properties and Techniques</h4>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Flexbox:</strong> Header layout and navigation alignment</li>
+                                <li><strong>CSS Grid:</strong> Content card responsive layouts</li>
+                                <li><strong>Linear Gradients:</strong> Background styling for headers and sections</li>
+                                <li><strong>Transitions:</strong> Smooth hover effects and animations</li>
+                                <li><strong>Box Shadow:</strong> Card depth and visual hierarchy</li>
+                                <li><strong>Media Queries:</strong> Responsive design for mobile devices</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Organization and Structure -->
+                <h3 class="subsection-title">Organization</h3>
+                <div class="content-card">
+                    <h4 class="card-title">Page Structure and Template Adaptation</h4>
+                    <div class="card-content">
+                        <p>Each page follows a consistent structure with clear headings:</p>
+                        <ul>
+                            <li><strong>Header Section:</strong> Fixed navigation with climate action branding</li>
+                            <li><strong>Hero Section:</strong> Mission statement and visual impact</li>
+                            <li><strong>Content Sections:</strong> Organized by topic (SDG alignment, resources, team info)</li>
+                            <li><strong>Footer:</strong> Links to editor pages and accessibility statement</li>
+                        </ul>
+                        <p>The template has been customized to reflect the climate action theme with appropriate colors, imagery, and content focused on environmental sustainability and UN SDG 13 (Climate Action).</p>
+                    </div>
+                </div>
+
+                <!-- Links Section -->
+                <h3 class="subsection-title">Links</h3>
+                <div class="links-section">
+                    <h4 class="card-title">Page Navigation Links</h4>
+                    <p>My pages include working internal navigation:</p>
+                    <ul>
+                        <li><a href="Content_ST3.html">Content Page</a> - Community engagement opportunities</li>
+                        <li><a href="feedback.html">Feedback Page</a> - User feedback and engagement system</li>
+                    </ul>
+                    <p><strong>Validation Link:</strong> <a href="validation_ST3.html">W3C Validation Results</a> - Shows validation status for all implemented pages</p>
+                </div>
+
+                <!-- Challenges and Lessons -->
+                <h3 class="subsection-title">Challenges and Lessons Learned</h3>
+                <div class="content-card">
+                    <h4 class="card-title">Implementation Challenges</h4>
+                    <div class="card-content">
+                        <p><strong>Challenge:</strong> Creating a cohesive climate action theme across multiple pages while maintaining usability and accessibility.</p>
+                        <p><strong>Resolution:</strong> Developed a consistent color scheme based on environmental themes (blues and greens), used semantic HTML for accessibility, and implemented responsive design principles.</p>
+                        <br>
+                        <p><strong>Lesson Learned:</strong> The importance of semantic HTML structure not only for accessibility but also for easier CSS styling and maintenance. Using CSS custom properties for consistent theming across pages proved invaluable.</p>
+                    </div>
+                </div>
+
+                <!-- Accessibility -->
+                <h3 class="subsection-title">Accessibility</h3>
+                <div class="accessibility-note">
+                    <h4 class="card-title">Accessibility Features</h4>
+                    <p>All pages demonstrate understanding of accessibility principles:</p>
+                    <ul>
+                        <li>Semantic HTML structure with proper heading hierarchy</li>
+                        <li>Alt text for all images describing climate action content</li>
+                        <li>Sufficient color contrast ratios for text readability</li>
+                        <li>Keyboard navigation support for interactive elements</li>
+                        <li>Responsive design ensuring usability across devices</li>
+                        <li>Clear focus indicators for navigation elements</li>
+                    </ul>
+                </div>
+
+                <!-- Compliance -->
+                <h3 class="subsection-title">Compliance</h3>
+                <div class="content-card">
+                    <h4 class="card-title">Janet Regulations Compliance</h4>
+                    <div class="card-content">
+                        <p>All created pages comply with <strong>Janet regulations</strong> governing web page publication:</p>
+                        <ul>
+                            <li>Realistic and truthful content about climate action initiatives</li>
+                            <li>Proper attribution of environmental data and statistics</li>
+                            <li>Adherence to web accessibility standards</li>
+                            <li>Appropriate use of UN SDG 13 content with proper context</li>
+                            <li>Educational content that promotes environmental awareness</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- References -->
+                <h3 class="subsection-title">References</h3>
+                <div class="content-card">
+                    <h4 class="card-title">Resources and Materials</h4>
+                    <div class="card-content">
+                        <p>All resources consulted during development:</p>
+                        <ul>
+                            <li>UN Sustainable Development Goals documentation for SDG 13 content</li>
+                            <li>W3C Web Accessibility Guidelines (WCAG) for accessibility implementation</li>
+                            <li>CSS Grid and Flexbox specifications for responsive layouts</li>
+                            <li>Climate action imagery from Unsplash (properly licensed)</li>
+                            <li>Web development best practices from MDN Web Docs</li>
+                            <li>Environmental data sources for factual accuracy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Page Styling -->
+                <h3 class="subsection-title">Page Styling</h3>
+                <div class="content-card">
+                    <h4 class="card-title">Design Alignment</h4>
+                    <div class="card-content">
+                        <p>This editor page maintains visual consistency with the main Climate Action Now website while providing a distinct editorial presentation. The design uses the same color scheme, typography, and layout principles as the main site to ensure cohesive user experience.</p>
+                        <p>The page styling emphasizes readability and organization, making it easy to navigate through the various sections of the editorial content while maintaining the professional climate action branding.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="footer-content">
+                <p>&copy; 2025 Climate Action Now. Together for a sustainable future.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

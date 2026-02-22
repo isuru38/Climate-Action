@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Action - Together for Our Planet</title>
+    <meta http-equiv="refresh" content="4; url=home.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4CAF50 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated background elements */
+        .background-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cloud:before {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+        }
+
+        .cloud1 {
+            width: 80px;
+            height: 30px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .cloud1:before {
+            width: 40px;
+            height: 40px;
+            top: -20px;
+            left: 15px;
+        }
+
+        .cloud2 {
+            width: 60px;
+            height: 25px;
+            top: 20%;
+            right: 15%;
+            animation-delay: -2s;
+        }
+
+        .cloud2:before {
+            width: 35px;
+            height: 35px;
+            top: -15px;
+            right: 10px;
+        }
+
+        .cloud3 {
+            width: 70px;
+            height: 28px;
+            bottom: 15%;
+            left: 20%;
+            animation-delay: -4s;
+        }
+
+        .cloud3:before {
+            width: 38px;
+            height: 38px;
+            top: -18px;
+            left: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-10px) translateX(5px); }
+            50% { transform: translateY(-20px) translateX(-5px); }
+            75% { transform: translateY(-10px) translateX(5px); }
+        }
+
+        /* Main content container */
+        .splash-container {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            position: relative;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Logo and icon */
+        .logo-container {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .earth-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #4CAF50, #2E7D32);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            position: relative;
+            animation: rotate 8s linear infinite;
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.6);
+        }
+
+        .earth-icon::before {
+            content: '🌍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* Title styling */
+        .title {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+            to { text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.8); }
+        }
+
+        /* Mission statement */
+        .mission {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Team members */
+        .team-section {
+            margin-bottom: 30px;
+            animation: fadeInUp 1.5s ease-out 1s both;
+        }
+
+        .team-title {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #E8F5E8;
+        }
+
+        .team-members {
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        /* Loading animation */
+        .loader-container {
+            margin-top: 40px;
+            animation: fadeIn 2s ease-out 1.5s both;
+        }
+
+        .loader-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #E8F5E8;
+        }
+
+        .loader {
+            width: 200px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A, #4CAF50);
+            border-radius: 10px;
+            animation: loading 4s ease-in-out;
+            background-size: 200% 100%;
+            animation: loading 4s ease-in-out, shimmer 1s infinite;
+        }
+
+        @keyframes loading {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: floatParticle 8s infinite ease-in-out;
+        }
+
+        .particle1 {
+            width: 4px;
+            height: 4px;
+            top: 30%;
+            left: 80%;
+            animation-delay: 0s;
+        }
+
+        .particle2 {
+            width: 6px;
+            height: 6px;
+            top: 60%;
+            left: 10%;
+            animation-delay: -2s;
+        }
+
+        .particle3 {
+            width: 3px;
+            height: 3px;
+            top: 80%;
+            right: 20%;
+            animation-delay: -4s;
+        }
+
+        .particle4 {
+            width: 5px;
+            height: 5px;
+            top: 40%;
+            right: 60%;
+            animation-delay: -6s;
+        }
+
+        @keyframes floatParticle {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-40px) translateX(-10px);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translateY(-20px) translateX(10px);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .splash-container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .title {
+                font-size: 2.5em;
+            }
+            
+            .mission {
+                font-size: 1.2em;
+            }
+            
+            .earth-icon {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .earth-icon::before {
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-elements">
+        <!-- Animated clouds -->
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        
+        <!-- Floating particles -->
+        <div class="particle particle1"></div>
+        <div class="particle particle2"></div>
+        <div class="particle particle3"></div>
+        <div class="particle particle4"></div>
+    </div>
+
+    <div class="splash-container">
+        <div class="logo-container">
+            <div class="earth-icon"></div>
+            <h1 class="title">Climate Action</h1>
+        </div>
+        
+        <div class="mission">
+            <p>Together for Our Planet - Taking Action Against Climate Change</p>
+            <p>Building a sustainable future through awareness, innovation, and collective action</p>
+        </div>
+        
+        <div class="team-section">
+            <h2 class="team-title">Our Team</h2>
+            <div class="team-members">
+                <p>Student Name 1 - Splash & Volunteer Pages</p>
+                <p>Student Name 2 - Template & Home Page</p>
+                <p>Student Name 3 - Feedback & Team Pages</p>
+                <p>Student Name 4 - Profile & Sitemap Pages</p>
+            </div>
+        </div>
+        
+        <div class="loader-container">
+            <p class="loader-text">Loading Climate Action Hub...</p>
+            <div class="loader">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

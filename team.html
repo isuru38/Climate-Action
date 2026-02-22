@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Action Now - Team</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8faff;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .site-header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #60a5fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            margin-top: 10px;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+            border-bottom: 2px solid #60a5fa;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 120px;
+            padding: 2rem 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Team Member Cards */
+        .team-member {
+            position: relative;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .member-thumbnail {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 2rem auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .member-thumbnail.member1 {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .member-thumbnail.member2 {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .member-thumbnail.member3 {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .member-thumbnail.member4 {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .team-member:hover .member-thumbnail {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .member-info {
+            padding: 0 2rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .member-name {
+            font-size: 1.4rem;
+            color: #1e3a8a;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: #3b82f6;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Expandable Details */
+        .member-details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(59, 130, 246, 0.95));
+            color: white;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 15px;
+        }
+
+        .team-member:hover .member-details {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .detail-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .detail-role {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #93c5fd;
+        }
+
+        .detail-tasks {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .task-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .task-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .task-list li:before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: #93c5fd;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .accessibility-note {
+            font-size: 0.9rem;
+            color: #bfdbfe;
+            margin-top: 1rem;
+        }
+
+        /* Accessibility */
+        .team-member {
+            tabindex: 0;
+        }
+
+        .team-member:focus {
+            outline: 3px solid #60a5fa;
+            outline-offset: 2px;
+        }
+
+        .team-member:focus .member-details {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-list {
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-list {
+                gap: 0.5rem;
+            }
+
+            .nav-link {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-section {
+                padding: 2rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.6rem;
+            }
+
+            .team-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="site-header">
+        <div class="wrapper">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">🌍</div>
+                    <h1 class="site-title">Climate Action Now</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="home.html" class="nav-link">Home</a></li>
+                        <li><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+                        <li><a href="table.html" class="nav-link">Table</a></li>
+                        <li><a href="profile.html" class="nav-link">Profile</a></li>
+                        <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                        <li><a href="sitemap.html" class="nav-link">Sitemap</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="wrapper">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <h2 class="hero-title">Meet Our Climate Action Team</h2>
+                <p class="hero-subtitle">Dedicated individuals working together to create sustainable solutions for our planet's future</p>
+            </section>
+
+            <!-- Team Section -->
+            <section class="team-section">
+                <div class="team-grid">
+                    <!-- Student 1 -->
+                    <div class="team-member" tabindex="0" role="button" aria-label="View details for Student 1">
+                        <div class="member-thumbnail member1">.</div>
+                        <div class="member-info">
+                            <h3 class="member-name">Student 1</h3>
+                            <p class="member-role">Damsath Nadun</p>
+                        </div>
+                        <div class="member-details">
+                            <h3 class="detail-name">Damsath Nadun</h3>
+                            <p class="detail-role">Contributions to climate mission</p>
+                            <div class="detail-tasks">
+                                <p><strong>Key Contributions:</strong></p>
+                                <ul class="task-list">
+                                    <li>Splash Screen Design </li>
+                                    <li>Volunteer Opportuniities Page</li>
+                                    <li>Health Awareness Campaigns</li>
+                                    <li>Community Outreach Programs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student 2 -->
+                    <div class="team-member" tabindex="0" role="button" aria-label="View details for Student 2">
+                        <div class="member-thumbnail member2">.</div>
+                        <div class="member-info">
+                            <h3 class="member-name">Student 2</h3>
+                            <p class="member-role">Isuru Ravishan</p>
+                        </div>
+                        <div class="member-details">
+                            <h3 class="detail-name">Isuru Ravishan</h3>
+                            <p class="detail-role">Contributions to climate mission</p>
+                            <div class="detail-tasks">
+                                <p><strong>Key Contributions:</strong></p>
+                                <ul class="task-list">
+                                    <li>Website Design & Navigation</li>
+                                    <li>Home page development</li>
+                                    <li>Climate Data tables</li>
+                                    <li>User Experience Design</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student 3 -->
+                    <div class="team-member" tabindex="0" role="button" aria-label="View details for Student 3">
+                        <div class="member-thumbnail member3">.</div>
+                        <div class="member-info">
+                            <h3 class="member-name">Student 3</h3>
+                            <p class="member-role">Achintha Wijayasundara</p>
+                        </div>
+                        <div class="member-details">
+                            <h3 class="detail-name">Achintha Wijayasundara</h3>
+                            <p class="detail-role">Contributions to climate mission</p>
+                            <div class="detail-tasks">
+                                <p><strong>Key Contributions:</strong></p>
+                                <ul class="task-list">
+                                    <li>Team Cordination</li>
+                                    <li>Feedback Collection Systems</li>
+                                    <li>Community Health Surveys</li>
+                                    <li>Climate Program Evalution</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student 4 -->
+                    <div class="team-member" tabindex="0" role="button" aria-label="View details for Student 4">
+                        <div class="member-thumbnail member4">.</div>
+                        <div class="member-info">
+                            <h3 class="member-name">Student 4</h3>
+                            <p class="member-role">Uvindu Weerasinghe</p>
+                        </div>
+                        <div class="member-details">
+                            <h3 class="detail-name">Uvindu Weerasinghe</h3>
+                            <p class="detail-role">Contributions to climate mission</p>
+                            <div class="detail-tasks">
+                                <p><strong>Key Contributions:</strong></p>
+                                <ul class="task-list">
+                                    <li>User Profile Systems</li>
+                                    <li>Site navigatiion Structure</li>
+                                    <li>Climate Information Organization</li>
+                                    <li>Personal Climate Tracking</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="footer-content">
+                <p>2025 Climate Action Now. Together for a sustainable future.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

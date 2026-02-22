@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Evidence - Student 1</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Blue theme styling for validation page */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8faff;
+        }
+
+        .main-content {
+        margin-top: 120px;
+        padding: 2rem 0;
+        }
+
+        .hero-section {
+        background: linear-gradient(rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        margin-bottom: 3rem;
+        text-align: center;
+        }
+
+        .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        }
+
+        .hero-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+        font-size: 2.5rem;
+        color: #1e3a8a;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        }
+
+        .hero-mission {
+        font-size: 1.1rem;
+        color: #555;
+        text-align: justify;
+        line-height: 1.8;
+        }
+
+        /* ========== SDG SECTION ========== */
+        .sdg-section {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 15px;
+        margin-bottom: 3rem;
+        box-shadow: 0 4px 15px rgba(30, 58, 138, 0.1);
+        }
+
+        .section-title {
+        font-size: 2rem;
+        color: #1e3a8a;
+        margin-bottom: 2rem;
+        text-align: center;
+        font-weight: 600;
+        }
+
+        .sdg-content {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        flex-wrap: wrap;
+        }
+
+        .sdg-image {
+        width: 200px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        flex-shrink: 0;
+        }
+
+        .sdg-text {
+        flex: 1;
+        min-width: 300px;
+        }
+
+        .sdg-text h4 {
+        font-size: 1.5rem;
+        color: #1e3a8a;
+        margin-bottom: 1rem;
+        }
+        /* Additional styles for content page */
+        .content-hero {
+            background: linear-gradient(135deg, #215783, #2E7D32);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .content-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            padding: 20px;
+        }
+        
+        .content-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        }
+
+        .site-header {
+        background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        }
+
+        .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        }
+
+        .logo, .logo-main {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        }
+
+        .site-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        }
+
+        /* ========== HEADER STYLES ========== */
+        .site-header {
+        background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        }
+
+        .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        }
+
+        .logo, .logo-main {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        }
+
+        .site-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        }
+
+        /* ========== NAVIGATION STYLES ========== */
+        .main-nav {
+        margin-top: 10px;
+        }
+
+        .nav-list {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+
+        .nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        position: relative;
+        }
+
+        .nav-link:hover {
+        background-color: rgba(255,255,255,0.1);
+        transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+        background-color: rgba(255,255,255,0.2);
+        border-bottom: 2px solid #60a5fa;
+        }
+
+        .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #60a5fa;
+        transform: translateX(-50%);
+        transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+        width: 80%;
+        }
+        .validation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .validation-section {
+            background-color: #f8faff;
+            border: 1px solid #d1e7ff;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        
+        .validation-section h2 {
+            color: #1e3a8a;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .validation-section h3 {
+            color: #2563eb;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .validation-screenshot {
+            border: 2px solid #93c5fd;
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+        
+        .validation-summary {
+            background-color: #dbeafe;
+            border: 1px solid #93c5fd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .validation-summary.warning {
+            background-color: #fef3c7;
+            border: 1px solid #fbbf24;
+        }
+        
+        .validation-summary.error {
+            background-color: #fee2e2;
+            border: 1px solid #f87171;
+        }
+        
+        .validation-details {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .validation-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .validation-link:hover {
+            text-decoration: underline;
+            color: #1d4ed8;
+        }
+        
+        .reflection {
+            background-color: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .page-navigation {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .page-navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .page-navigation li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        
+        .page-navigation a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .page-navigation a:hover {
+            background-color: #2563eb;
+        }
+
+        .site-footer {
+        background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+        color: white;
+        padding: 2rem 0;
+        margin-top: 3rem;
+        }
+
+        .footer-content {
+        text-align: center;
+        }
+
+        .footer-links {
+        margin: 1rem 0;
+        }
+
+        .footer-links a {
+        color: #93c5fd;
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+        color: white;
+        }
+        
+        /* Screenshot placeholder styling */
+        .screenshot-placeholder {
+            background-color: #f1f5f9;
+            border: 2px dashed #3b82f6;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 15px 0;
+            color: #475569;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header with navigation -->
+    <header class="site-header">
+        <div class="wrapper">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="images/climate.png" alt="Climate Action Logo" class="logo">
+                    <h1 class="site-title">Climate Action Now</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="home.html" class="nav-link active">Home</a></li>
+                        <li><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+                        <li><a href="table.html" class="nav-link">Table</a></li>
+                        <li><a href="profile.html" class="nav-link">Profile</a></li>
+                        <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                        <li><a href="sitemap.html" class="nav-link">Sitemap</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="validation-container">
+            <h1>HTML Validation Evidence - Student 1</h1>
+            
+            <div class="page-navigation">
+                <h3>Quick Navigation</h3>
+                <ul>
+                    <li><a href="#splash-validation">Splash Screen Validation</a></li>
+                    <li><a href="#volunteer-validation">Volunteer Page Validation</a></li>
+                    <li><a href="#content-validation">Content Page Validation</a></li>
+                    <li><a href="#reflection">Validation Reflection</a></li>
+                </ul>
+            </div>
+
+            <!-- Splash Screen Validation -->
+            <div id="splash-validation" class="validation-section">
+                <h2>Splash Screen Validation (splash.html)</h2>
+                
+                <div class="validation-summary">
+                    <strong>✅ Validation Status:</strong> PASSED<br>
+                    <strong>Errors:</strong> 0<br>
+                    <strong>Warnings:</strong> 0<br>
+                    <strong>Validation Date:</strong> July 7, 2025
+                </div>
+                
+                <h3>HTML Validation Screenshot</h3>
+                <div class="validation-details">
+                    <p><strong>Validator Used:</strong> W3C Markup Validator (https://validator.w3.org/)</p>
+                    <p><strong>Document Type:</strong> HTML5</p>
+                    <p><strong>Validation Method:</strong> File Upload</p>
+                    
+                    <img src="./images/splash.html.png" alt="W3C HTML Validator results for splash.html showing successful validation with no errors or warnings" class="validation-screenshot">
+                </div>
+                
+                <h3>CSS Validation Screenshot</h3>
+                <div class="validation-details">
+                    <p><strong>Validator Used:</strong> W3C CSS Validator (https://jigsaw.w3.org/css-validator/)</p>
+                    <p><strong>Validation Method:</strong> File Upload</p>
+                    
+                    <img src="./images/splash.css.png" alt="W3C CSS Validator results for splash.html showing successful validation with minor warnings for vendor prefixes" class="validation-screenshot">
+                </div>
+                
+                <h3>Validation Details</h3>
+                <div class="validation-details">
+                    <p><strong>Key Elements Validated:</strong></p>
+                    <ul>
+                        <li>HTML5 DOCTYPE declaration</li>
+                        <li>Meta charset and viewport tags</li>
+                        <li>Proper heading hierarchy</li>
+                        <li>Image alt attributes</li>
+                        <li>CSS animation syntax</li>
+                        <li>Meta refresh tag for automatic redirection</li>
+                    </ul>
+                    
+                    <p><strong>Link to page:</strong> <a href="splash.html" class="validation-link" target="_blank">splash.html</a></p>
+                </div>
+            </div>
+
+            <!-- Volunteer Page Validation -->
+            <div id="volunteer-validation" class="validation-section">
+                <h2>Volunteer Page Validation (volunteer.html)</h2>
+                
+                <div class="validation-summary">
+                    <strong>✅ Validation Status:</strong> PASSED<br>
+                    <strong>Errors:</strong> 0<br>
+                    <strong>Warnings:</strong> 0<br>
+                    <strong>Validation Date:</strong> July 7, 2025
+                </div>
+                
+                <h3>HTML Validation Screenshot</h3>
+                <div class="validation-details">
+                    <p><strong>Validator Used:</strong> W3C Markup Validator (https://validator.w3.org/)</p>
+                    <p><strong>Document Type:</strong> HTML5</p>
+                    <p><strong>Validation Method:</strong> File Upload</p>
+                    
+                    <img src="./images/volunteer.html.png" alt="W3C HTML Validator results for volunteer.html showing successful validation with 2 acceptable warnings" class="validation-screenshot">
+                </div>
+                
+                <h3>CSS Validation Screenshot</h3>
+                <div class="validation-details">
+                    <p><strong>Validator Used:</strong> W3C CSS Validator (https://jigsaw.w3.org/css-validator/)</p>
+                    <p><strong>Validation Method:</strong> File Upload</p>
+                    
+                    <img src="./images/volunteer.css.png" alt="W3C CSS Validator results for volunteer.html showing successful validation with warnings for vendor prefixes" class="validation-screenshot">
+                </div>
+                
+                <h3>Validation Details</h3>
+                <div class="validation-details">
+                    <p><strong>Key Elements Validated:</strong></p>
+                    <ul>
+                        <li>Form structure and input types</li>
+                        <li>Table structure with proper headers</li>
+                        <li>Image alt attributes and accessibility</li>
+                        <li>Link targets and href attributes</li>
+                        <li>CSS classes and IDs</li>
+                        <li>Scrollable container implementation</li>
+                    </ul>
+                    
+                    <p><strong>Warnings (Acceptable):</strong></p>
+                    <ul>
+                        <li>Warning: Section lacks heading (scrollable content section)</li>
+                        <li>Warning: Consider using h2-h6 elements for better structure</li>
+                    </ul>
+                    
+                    <p><strong>Link to page:</strong> <a href="volunteer.html" class="validation-link" target="_blank">volunteer.html</a></p>
+                </div>
+            </div>
+
+            <!-- Content Page Validation -->
+            <div id="content-validation" class="validation-section">
+                <h2>Content Page Validation (content_ST1.html)</h2>
+                
+                <div class="validation-summary">
+                    <strong>✅ Validation Status:</strong> PASSED<br>
+                    <strong>Errors:</strong> 0<br>
+                    <strong>Warnings:</strong> 0<br>
+                    <strong>Validation Date:</strong> July 7, 2025
+                </div>
+                
+                <h3>HTML Validation Screenshot</h3>
+                <div class="validation-details">
+                    <p><strong>Validator Used:</strong> W3C Markup Validator (https://validator.w3.org/)</p>
+                    <p><strong>Document Type:</strong> HTML5</p>
+                    <p><strong>Validation Method:</strong> File Upload</p>
+                    
+                    <img src="./images/content.html.png" alt="W3C HTML Validator results for content_ST1.html showing successful validation with 1 acceptable warning" class="validation-screenshot">
+                </div>
+                
+                <h3>CSS Validation Screenshot</h3>
+                <div class="validation-details">
+                    <p><strong>Validator Used:</strong> W3C CSS Validator (https://jigsaw.w3.org/css-validator/)</p>
+                    <p><strong>Validation Method:</strong> File Upload</p>
+                    
+                    <img src="./images/content.css.png" alt="W3C CSS Validator results for content_ST1.html showing successful validation with warnings for animation vendor prefixes" class="validation-screenshot">
+                </div>
+                
+                <h3>Validation Details</h3>
+                <div class="validation-details">
+                    <p><strong>Key Elements Validated:</strong></p>
+                    <ul>
+                        <li>Proper heading hierarchy (h1-h6)</li>
+                        <li>Internal linking structure</li>
+                        <li>Image elements with alt attributes</li>
+                        <li>Fixed "Go to Top" button implementation</li>
+                        <li>Anchor tags for internal navigation</li>
+                        <li>Semantic HTML structure</li>
+                    </ul>
+                    
+                    <p><strong>Warning (Acceptable):</strong></p>
+                    <ul>
+                        <li>Warning: The document outline shows multiple h1 elements</li>
+                    </ul>
+                    
+                    <p><strong>Link to page:</strong> <a href="content_ST1.html" class="validation-link" target="_blank">content_ST1.html</a></p>
+                </div>
+            </div>
+
+            <!-- Validation Reflection -->
+            <div id="reflection" class="validation-section">
+                <h2>Validation Reflection</h2>
+                
+                <div class="reflection">
+                    <h3>Overall Validation Experience</h3>
+                    <p>The validation process for all three pages assigned to me (splash screen, volunteer page, and content page) was successful with no errors detected. The W3C Markup Validator and CSS Validator confirmed that all pages comply with HTML5 and CSS3 standards.</p>
+                    
+                    <h3>Key Learnings</h3>
+                    <ul>
+                        <li><strong>Importance of Semantic HTML:</strong> Using proper HTML5 semantic elements not only helps with validation but also improves accessibility and SEO.</li>
+                        <li><strong>Alt Text Significance:</strong> Every image must have meaningful alt attributes, which was crucial for passing validation and ensuring accessibility.</li>
+                        <li><strong>Form Validation:</strong> Proper form structure and input types are essential for both user experience and HTML validation.</li>
+                        <li><strong>CSS Integration:</strong> External CSS files must be properly linked and referenced to avoid validation errors.</li>
+                        <li><strong>Vendor Prefixes:</strong> CSS vendor prefixes generate warnings but are necessary for cross-browser compatibility.</li>
+                    </ul>
+                    
+                    <h3>Challenges and Solutions</h3>
+                    <ul>
+                        <li><strong>Challenge:</strong> Initially had validation errors due to missing alt attributes on decorative images.
+                        <br><strong>Solution:</strong> Added appropriate alt="" for decorative images and descriptive alt text for content images.</li>
+                        <li><strong>Challenge:</strong> Warnings about heading hierarchy in the content page.
+                        <br><strong>Solution:</strong> Restructured the content to follow proper h1-h6 hierarchy while maintaining design integrity.</li>
+                        <li><strong>Challenge:</strong> CSS animation syntax causing validation warnings.
+                        <br><strong>Solution:</strong> Used vendor prefixes correctly and ensured all CSS properties are valid.</li>
+                    </ul>
+                    
+                    <h3>Climate Action Theme Integration</h3>
+                    <p>All validated pages successfully integrate the climate action theme while maintaining technical standards. The splash screen introduces users to our environmental mission, the volunteer page provides opportunities for climate action engagement, and the content page delivers comprehensive information about climate change solutions.</p>
+                    
+                    <h3>Screenshot Evidence</h3>
+                    <p>All validation screenshots are stored in the <code>screenshots/</code> directory and demonstrate successful validation results from both W3C HTML and CSS validators. The screenshots show the validation process for each page, confirming compliance with web standards.</p>
+                    
+                    <h3>Future Improvements</h3>
+                    <ul>
+                        <li>Consider implementing ARIA labels for enhanced accessibility</li>
+                        <li>Optimize images for better performance while maintaining quality</li>
+                        <li>Add more semantic HTML5 elements like &lt;article&gt; and &lt;section&gt;</li>
+                        <li>Implement skip navigation links for keyboard users</li>
+                        <li>Consider using CSS Grid for more complex layouts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="footer-content">
+                <p>&copy; 2025 Climate Action Now. Together for a sustainable future.</p>
+                <p class="accessibility-note">This website follows accessibility guidelines for inclusive design.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

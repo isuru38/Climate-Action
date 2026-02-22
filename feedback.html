@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Climate Action Now</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8faff;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .site-header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #60a5fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        .main-nav {
+            margin-top: 10px;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+            border-bottom: 2px solid #60a5fa;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 120px;
+            padding: 2rem 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+            border-radius: 15px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-description {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Form Styles */
+        .feedback-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1e3a8a;
+            font-weight: 500;
+        }
+
+        .required {
+            color: #dc2626;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="datetime-local"],
+        input[type="file"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        input.error,
+        textarea.error,
+        select.error {
+            border-color: #dc2626;
+            background-color: #fef2f2;
+        }
+
+        .error-message {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .char-counter {
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: right;
+            margin-top: 0.25rem;
+        }
+
+        /* Checkbox and Radio Styles */
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        /* Multi-select List */
+        .multi-select {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .multi-select option {
+            padding: 0.5rem;
+        }
+
+        /* Rating System */
+        .rating-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .star {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .star:hover,
+        .star.active {
+            color: #fbbf24;
+        }
+
+        .rating-scale {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .rating-number {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .rating-number:hover,
+        .rating-number.selected {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        /* Submit Button */
+        .submit-section {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: #93c5fd;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-list {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .feedback-form {
+                padding: 2rem 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-list {
+                gap: 0.5rem;
+            }
+
+            .nav-link {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .rating-scale {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrapper">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">🌍</div>
+                    <h1 class="site-title">Climate Action Now</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="home.html" class="nav-link">Home</a></li>
+                        <li><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+                        <li><a href="table.html" class="nav-link">Table</a></li>
+                        <li><a href="profile.html" class="nav-link">Profile</a></li>
+                        <li><a href="feedback.html" class="nav-link active">Feedback</a></li>
+                        <li><a href="sitemap.html" class="nav-link">Sitemap</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="wrapper">
+            <div class="page-header">
+                <h2 class="page-title">Your Voice Matters</h2>
+                <p class="page-description">
+                    Help us improve our climate action initiatives by sharing your feedback. Your insights drive our mission to create meaningful environmental change and build a more sustainable future for all.
+                </p>
+            </div>
+            <form class="feedback-form" id="feedbackForm">
+                <div class="form-section">
+                    <h3 class="section-title">Personal Details</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" required>
+                            <div class="error-message" id="fullNameError">Please enter your full name</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-message" id="emailError">Please enter a valid email address</div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telephone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                            <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="visitDate">Date of Visit/Interaction</label>
+                            <input type="date" id="visitDate" name="visitDate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" rows="3" placeholder="Enter your full address"></textarea>
+                    </div>
+                </div>
+
+                <!-- Experience Feedback Section -->
+                <div class="form-section">
+                    <h3 class="section-title">Feedback Details</h3>
+                    
+                    <div class="form-group">
+                        <label for="firstVisit">Was this your first time visiting our climate action platform?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="firstVisitYes" name="firstVisit" value="yes">
+                                <label for="firstVisitYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="firstVisitNo" name="firstVisit" value="no">
+                                <label for="firstVisitNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="easyNavigate">Was this website informative and easy to navigate through?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="easyYes" name="easyNavigate" value="yes">
+                                <label for="easyYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="easyNo" name="easyNavigate" value="no">
+                                <label for="easyNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="improvements">If "No", suggest any improvements for the future:</label>
+                        <textarea id="improvements" name="improvements" maxlength="500" placeholder="Share your suggestions for improving our platform..."></textarea>
+                        <div class="char-counter" id="improvementsCounter">0/500 characters</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="climateTopics">Which climate action topics interest you most? (Select multiple)</label>
+                        <select id="climateTopics" name="climateTopics" multiple size="6" class="multi-select">
+                            <option value="renewable-energy">Renewable Energy Solutions</option>
+                            <option value="sustainable-living">Sustainable Living Practices</option>
+                            <option value="climate-policy">Climate Policy & Advocacy</option>
+                            <option value="conservation">Environmental Conservation</option>
+                            <option value="carbon-reduction">Carbon Footprint Reduction</option>
+                            <option value="green-technology">Green Technology Innovation</option>
+                            <option value="community-action">Community Climate Action</option>
+                            <option value="education">Climate Education & Awareness</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="participationInterest">What type of climate action activities would you like to participate in?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="volunteering" name="participationInterest" value="volunteering">
+                                <label for="volunteering">Volunteer for environmental projects</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="advocacy" name="participationInterest" value="advocacy">
+                                <label for="advocacy">Climate advocacy and campaigns</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="education" name="participationInterest" value="education">
+                                <label for="education">Educational workshops and seminars</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="research" name="participationInterest" value="research">
+                                <label for="research">Climate research and data collection</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="community" name="participationInterest" value="community">
+                                <label for="community">Community outreach programs</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="submitFeedback">When would you like to submit additional feedback?</label>
+                        <input type="datetime-local" id="submitFeedback" name="submitFeedback">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attachments">Upload any relevant documents or images</label>
+                        <input type="file" id="attachments" name="attachments" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" multiple>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Rate Your Experience</h3>
+                    
+                    <div class="form-group">
+                        <label>How satisfied are you with our climate action resources?</label>
+                        <div class="rating-group">
+                            <div class="star-rating" data-rating="resources">
+                                <span class="star" data-value="1">⭐</span>
+                                <span class="star" data-value="2">⭐</span>
+                                <span class="star" data-value="3">⭐</span>
+                                <span class="star" data-value="4">⭐</span>
+                                <span class="star" data-value="5">⭐</span>
+                            </div>
+                            <input type="hidden" name="resourcesRating" id="resourcesRating">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rate our services from 0 to 10, with 0 being "Not satisfied at all" and 10 being "Extremely satisfied":</label>
+                        <div class="rating-scale">
+                            <span>0</span>
+                            <div class="rating-number" data-value="0">0</div>
+                            <div class="rating-number" data-value="1">1</div>
+                            <div class="rating-number" data-value="2">2</div>
+                            <div class="rating-number" data-value="3">3</div>
+                            <div class="rating-number" data-value="4">4</div>
+                            <div class="rating-number" data-value="5">5</div>
+                            <div class="rating-number" data-value="6">6</div>
+                            <div class="rating-number" data-value="7">7</div>
+                            <div class="rating-number" data-value="8">8</div>
+                            <div class="rating-number" data-value="9">9</div>
+                            <div class="rating-number" data-value="10">10</div>
+                            <span>10</span>
+                        </div>
+                        <input type="hidden" name="serviceRating" id="serviceRating">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recommend">Would you recommend our climate action platform to others?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="recommendYes" name="recommend" value="yes">
+                                <label for="recommendYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="recommendNo" name="recommend" value="no">
+                                <label for="recommendNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updates">Would you like to receive updates about our climate action initiatives and events?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="updatesYes" name="updates" value="yes">
+                                <label for="updatesYes">Yes - All updates</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="updatesEmail" name="updates" value="email-only">
+                                <label for="updatesEmail">Yes - Email only</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="updatesNo" name="updates" value="no">
+                                <label for="updatesNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Additional Comments</h3>
+                    
+                    <div class="form-group">
+                        <label for="additionalComments">Do you have any additional questions or comments about our climate action initiatives?</label>
+                        <textarea id="additionalComments" name="additionalComments" maxlength="1000" placeholder="Share your thoughts, questions, or suggestions about our climate action work..."></textarea>
+                        <div class="char-counter" id="commentsCounter">0/1000 characters</div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn" id="submitBtn">Submit Feedback</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="footer-content">
+                <p>2025 Climate Action Now. Together for a sustainable future.</p>
+            </div>
+        </div>
+    </footer>
+</Body>
+</html>
+
+       

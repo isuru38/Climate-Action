@@ -1,0 +1,144 @@
+/* ========== Content Page Specific Styles ========== */
+
+.main-content {
+  margin-top: 120px;
+  padding: 2.5rem 2rem;
+  max-width: 1100px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.7;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.internal-nav {
+  margin-bottom: 2rem;
+  background-color: #e5f4ff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #1e3a8a;
+  overflow-x: auto;
+}
+
+.internal-nav strong {
+  margin-right: 1rem;
+}
+
+.internal-nav table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.internal-nav td {
+  padding: 0.3rem 1rem;
+  text-align: center;
+}
+
+.internal-nav a {
+  color: #1e3a8a;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.internal-nav a:hover {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+section h2 {
+  font-size: 2rem;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 0.3rem;
+}
+
+section p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+section img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+section ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  list-style-type: disc;
+}
+
+section ul li {
+  margin-bottom: 0.7rem;
+  font-size: 1rem;
+}
+
+.go-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #1e3a8a;
+  color: white;
+  padding: 0.7rem 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1001;
+}
+
+.go-top:hover {
+  background-color: #3b82f6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1.5rem;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+  }
+
+  .internal-nav table,
+  .internal-nav td {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.3rem 0;
+  }
+
+  .internal-nav strong {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section p,
+  section ul li {
+    font-size: 0.9rem;
+  }
+
+  .go-top {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+    bottom: 15px;
+    right: 15px;
+  }
+}

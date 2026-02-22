@@ -1,0 +1,367 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8faff;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* === SVG Sitemap Styles === */
+
+svg {
+  width: 100%;
+  height: auto;
+}
+
+.node {
+  fill: #6c63ff;
+  stroke: #333;
+  stroke-width: 1;
+  transition: fill 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.node:hover {
+  fill: #ff6584;
+}
+
+/* Node label text */
+text {
+  font-size: 14px;
+  fill: #fff;
+  pointer-events: none;
+  font-family: Arial, sans-serif;
+  text-anchor: middle;
+  alignment-baseline: middle;
+}
+
+/* Focus style for keyboard navigation */
+a:focus .node {
+  fill: #ffa726;
+  outline: none;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 30px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+footer a {
+  color: #6c63ff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Header Styles */
+.site-header {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: white;
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Logo & Nav Styles */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.site-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.main-nav {
+  margin-top: 10px;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  background-color: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  background-color: rgba(255,255,255,0.2);
+  border-bottom: 2px solid #60a5fa;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #60a5fa;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+.profile-header {
+  display: flex;
+  align-items: center;
+  background-color:#93c5fd;
+  color: white;
+  padding: 90px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid white;
+  margin-right: 20px;
+}
+
+.user-info h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+.card {
+  background:#f0fdf4;
+  padding: 60px;
+  margin: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.info-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 0 20px;
+}
+
+.bar {
+  background: #ddd;
+  border-radius: 10px;
+  height: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.fill {
+  background:#3b82f6;
+  height: 100%;
+}
+
+.icons img {
+  width: 50px;
+  margin: 5px;
+  transition: transform 0.3s;
+}
+
+.icons img:hover {
+  transform: scale(1.2);
+}
+
+.contact-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-section input,
+.contact-section textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.volunteering-section img {
+  width: 150px;
+  height: auto;
+  display: block;
+  margin-top: 15px;
+  border-radius: 8px;
+}
+
+
+.contact-section button {
+  padding: 10px;
+  border: none;
+  background: #5467e4;
+  color: white;
+  margin-right: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Targets only the button with id="send" */
+.contact-section button#send {
+  background-color: #2e7d32; /* green */
+}
+.contact-section button#send:hover {
+  background-color: #afbeaf; /* green */
+}
+
+.contact-section button:hover {
+  background: #60a5fa;
+}
+
+
+/* Conservation Section */
+.conservation-section {
+  background: #f0fdf4;
+  padding: 100px 0 40px; /* Add top padding to clear fixed header */
+}
+.conservation-section .wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.conservation-section h2 {
+  color: #2e7d32;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.conservation-section p.intro {
+  text-align: center;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+}
+
+/* Responsive Figure & Caption */
+figure.conservation-image-figure {
+  max-width: 600px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+figure.conservation-image-figure img {
+  width: 70%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+figure.conservation-image-figure figcaption {
+  margin-top: 8px;
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Activity Blocks */
+.activity {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px 0;
+  border-left: 6px solid #a5d6a7;
+}
+.activity h3 {
+  margin-top: 0;
+  color: #1b5e20;
+}
+.activity p {
+  margin: 8px 0 0;
+  color: #333;
+  font-size: 0.95em;
+}
+
+/* Footer Styles */
+.site-footer {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: white;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+.footer-content {
+  text-align: center;
+}
+.footer-links {
+  margin: 1rem 0;
+}
+.footer-links a {
+  color: #93c5fd;
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover {
+  color: white;
+}
+.accessibility-note {
+  font-size: 0.9rem;
+  color: #bfdbfe;
+  margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .nav-list {
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  .nav-list {
+    gap: 0.5rem;
+  }
+  .nav-link {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+  }
+}
